@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecta — Social Media Platform</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">CONNECTA<span>.</span></a>
+  <div class="top-actions">
+    <button id="nav-login" class="btn outline">Login</button>
+    <button id="nav-register" class="btn primary">Create Account</button>
+    <button id="nav-logout" class="btn outline hidden">Logout</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar">
+    <section class="card profile-card">
+      <div id="profile-avatar" class="avatar big">?</div>
+      <h3 id="profile-name">Guest</h3>
+      <p id="profile-bio">Join Connecta and share your ideas.</p>
+      <div class="stats">
+        <div><b id="profile-followers">0</b><small>Followers</small></div>
+        <div><b id="profile-following">0</b><small>Following</small></div>
+      </div>
+    </section>
+    <section class="card">
+      <h3>Task 2</h3>
+      <p class="muted">Mini Social Media Platform</p>
+      <small class="muted">Profiles · Posts · Comments · Likes · Follows</small>
+    </section>
+  </aside>
+
+  <section class="feed">
+    <div id="guest-banner" class="notice">
+      <b>Welcome to Connecta.</b>
+      <span>Login to create posts, like, comment and follow users.</span>
+    </div>
+
+    <form id="post-form" class="card composer hidden">
+      <div class="composer-row">
+        <div id="composer-avatar" class="avatar">?</div>
+        <textarea id="post-content" maxlength="1000" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <div class="composer-bottom">
+        <input id="post-image" type="url" placeholder="Optional image URL">
+        <button class="btn primary" type="submit">Publish Post</button>
+      </div>
+    </form>
+
+    <div class="feed-heading">
+      <div><h2>Community Feed</h2><p class="muted">Discover what people are sharing.</p></div>
+      <button id="refresh-feed" class="btn outline">Refresh</button>
+    </div>
+
+    <div id="feed-list"></div>
+  </section>
+
+  <aside class="rightbar">
+    <section class="card">
+      <h3>Features</h3>
+      <ul class="muted">
+        <li>User registration/login</li>
+        <li>User profiles</li>
+        <li>Posts & comments</li>
+        <li>Like/unlike</li>
+        <li>Follow/unfollow</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h3>Technology</h3>
+      <p><b>Frontend:</b> HTML, CSS, JavaScript</p>
+      <p><b>Backend:</b> Django</p>
+      <p><b>Database:</b> SQLite</p>
+    </section>
+  </aside>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<div id="auth-modal" class="modal hidden">
+  <div class="modal-box">
+    <button id="auth-close" class="close">×</button>
+    <section id="login-view">
+      <h2>Welcome Back</h2>
+      <p class="muted">Login to continue.</p>
+      <form id="login-form">
+        <input id="login-email" type="email" placeholder="Email" required>
+        <input id="login-password" type="password" placeholder="Password" required>
+        <button class="btn primary full" type="submit">Login</button>
+      </form>
+      <p class="switch">Don't have an account?
+        <button id="switch-register" class="link" type="button">Create one</button>
+      </p>
+    </section>
+
+    <section id="register-view" class="hidden">
+      <h2>Create Account</h2>
+      <p class="muted">Join the Connecta community.</p>
+      <form id="register-form">
+        <input id="register-name" type="text" placeholder="Your name" required>
+        <input id="register-username" type="text" placeholder="Username" required>
+        <input id="register-email" type="email" placeholder="Email" required>
+        <input id="register-password" type="password" minlength="6" placeholder="Password (6+ characters)" required>
+        <button class="btn primary full" type="submit">Register</button>
+      </form>
+      <p class="switch">Already have an account?
+        <button id="switch-login" class="link" type="button">Login</button>
+      </p>
+    </section>
+  </div>
+</div>
+
+<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
